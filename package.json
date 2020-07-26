@@ -2,7 +2,7 @@
   "name": "custom-server-typescript",
   "version": "1.0.0",
   "scripts": {
-    "dev": "ts-node-dev --project tsconfig.server.json --ignore-watch .next server/index.ts",
+    "dev": "ts-node-dev --project tsconfig.server.json --ignore-watch .next src/server/index.ts",
     "build": "next build && tsc --project tsconfig.server.json",
     "start": "cross-env NODE_ENV=production node dist/index.js"
   },

@@ -5,7 +5,7 @@ module.exports = withSass({
   poweredByHeader: false,
   webpack(config) {
     config.resolve.alias = {
-      '~': path.resolve(__dirname, './'),
+      '~': path.resolve(__dirname, './src'),
     };
     return config;
   },
