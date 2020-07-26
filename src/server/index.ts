@@ -1,15 +1,18 @@
-import express, { Request, Response } from 'express';
 import next from 'next';
+import Server from 'next/dist/next-server/server/next-server';
 
-const dev = process.env.NODE_ENV !== 'production';
-const app = next({ dev });
+import express, { Request, Response } from 'express';
+import { ParsedUrlQuery } from 'querystring';
+
+const dev: boolean = process.env.NODE_ENV !== 'production';
+const app: Server = next({ dev });
 const handle = app.getRequestHandler();
-const port = process.env.PORT || 3000;
+const port: string | number = process.env.PORT || 3000;
 
-function installErrorHandler(app: any) {
+function installErrorHandler(app: Server) {
   const _renderErrorToHTML = app.renderErrorToHTML.bind(app);
 
-  app.renderErrorToHTML = (err: any, req: any, res: any, pathname: any, query: any) => {
+  app.renderErrorToHTML = (err: Error, req: Request, res: Response, pathname: string, query: ParsedUrlQuery) => {
     if (err) {
       console.error(err);
     }
@@ -32,7 +35,7 @@ async function main() {
     server.all('*', (req: Request, res: Response) => {
       return handle(req, res);
     });
-    server.listen(port, (err?: any) => {
+    server.listen(port, (err?: Error) => {
       if (err) throw err;
       console.log(`> Ready on localhost:${port} - env ${process.env.NODE_ENV}`);
     });
