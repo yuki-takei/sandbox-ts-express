@@ -6,8 +6,4 @@ function GrowiApp({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />;
 }
 
-GrowiApp.getInitialProps = async() => {
-  return {};
-};
-
 export default GrowiApp;
