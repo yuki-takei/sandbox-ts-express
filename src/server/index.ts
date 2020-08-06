@@ -4,6 +4,10 @@ import Server from 'next/dist/next-server/server/next-server';
 import express, { Request, Response } from 'express';
 import { ParsedUrlQuery } from 'querystring';
 
+import { sampleUserData } from '~/utils/sample-data';
+
+console.log(sampleUserData);
+
 const dev: boolean = process.env.NODE_ENV !== 'production';
 const app: Server = next({ dev });
 const handle = app.getRequestHandler();
